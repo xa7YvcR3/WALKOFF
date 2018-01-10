@@ -25,7 +25,7 @@ class ScheduledTask(db.Model, TrackModificationsMixIn):
                                 cascade="all, delete-orphan",
                                 backref='post',
                                 lazy='dynamic')
-    trigger_type = db.Column(db.Enum('date', 'interval', 'cron', 'unspecified'))
+    trigger_type = db.Column(db.Enum('date', 'interval', 'cron', 'goal', 'unspecified'))
     trigger_args = db.Column(db.String(255))
 
     def __init__(self, name, description='', status='running', workflows=None, task_trigger=None):

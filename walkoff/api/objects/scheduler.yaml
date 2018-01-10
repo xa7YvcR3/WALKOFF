@@ -65,7 +65,7 @@ TaskTrigger:
     type:
       description: Type of scheduler trigger to use for this task
       type: string
-      enum: [date, interval, cron]
+      enum: [date, interval, cron, goal]
       example: date
     args:
       type: object

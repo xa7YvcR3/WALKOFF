@@ -10,6 +10,7 @@ from apscheduler.triggers.cron import CronTrigger
 from apscheduler.triggers.date import DateTrigger
 from apscheduler.triggers.interval import IntervalTrigger
 
+from walkoff.core.scheduler_types.goal import GoalTrigger
 from walkoff.events import WalkoffEvent
 
 logger = logging.getLogger(__name__)
@@ -30,6 +31,8 @@ def construct_trigger(trigger_args):
             return IntervalTrigger(**trigger_args)
         elif trigger_type == 'cron':
             return CronTrigger(**trigger_args)
+        elif trigger_type == 'goal':
+            return GoalTrigger(**trigger_args)
         else:
             raise InvalidTriggerArgs(
                 'Invalid scheduler type {0} with args {1}.'.format(trigger_type, trigger_args))

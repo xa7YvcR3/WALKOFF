@@ -10,6 +10,7 @@ import { ScheduledTask } from '../models/scheduledTask';
 import { ScheduledTaskCron } from '../models/scheduledTaskCron';
 import { ScheduledTaskInterval } from '../models/scheduledTaskInterval';
 import { ScheduledTaskDate } from '../models/scheduledTaskDate';
+import { ScheduledTaskGoal } from '../models/scheduledTaskGoal';
 import { GenericObject } from '../models/genericObject';
 
 @Component({
@@ -26,11 +27,13 @@ export class SchedulerModalComponent {
 	@Input() submitText: string;
 	@Input() availableWorkflows: Select2OptionData[] = [];
 
-	scheduledItemTriggerTypes: string[] = ['date', 'interval', 'cron'];
+	scheduledItemTriggerTypes: string[] = ['date', 'interval', 'cron', 'goal'];
 	workflowSelectConfig: Select2Options;
+	goalSelectConfig: Select2Options;
 	cron: ScheduledTaskCron = new ScheduledTaskCron();
 	interval: ScheduledTaskInterval = new ScheduledTaskInterval();
 	date: ScheduledTaskDate = new ScheduledTaskDate();
+	goal: ScheduledTaskGoal = new ScheduledTaskGoal();
 	
 	constructor(
 		private schedulerService: SchedulerService, private activeModal: NgbActiveModal,
@@ -42,6 +45,13 @@ export class SchedulerModalComponent {
 			multiple: true,
 			allowClear: true,
 			placeholder: 'Select workflow(s) to run...',
+			closeOnSelect: false,
+		};
+		this.goalSelectConfig = {
+			width: '100%',
+			multiple: true,
+			allowClear: true,
+			placeholder: 'Set workflow(s) as goal...',
 			closeOnSelect: false,
 		};
 	}
@@ -107,6 +117,12 @@ export class SchedulerModalComponent {
 			}
 		}
 
+        if (this.workingScheduledTask.task_trigger.type === 'goal') {
+			if (!this._doesArgsHaveAnything(args)) {
+				return 'You must specify some conditional workflow and an interval of time for the actions to occur.';
+			}
+		}
+
 		return '';
 	}
 
@@ -141,6 +157,9 @@ export class SchedulerModalComponent {
 			case 'date':
 				this.workingScheduledTask.task_trigger.args = this.date;
 				break;
+			case 'goal':
+			    this.workingScheduledTask.task_trigger.args = this.goal;
+			    break;
 			default:
 				this.workingScheduledTask.task_trigger.args = null;
 				break;
@@ -149,6 +168,12 @@ export class SchedulerModalComponent {
 
 	workflowsSelectChanged(e: any): void {
 		this.workingScheduledTask.workflows = e.value;
+	}
+
+    goalWorkflowSelectChanged(e: any): void {
+        if(this.workingScheduledTask.task_trigger.type == "goal"){
+            this.goal.goalWorkflows = e.value;
+        }
 	}
 
 	getToday(): string {
