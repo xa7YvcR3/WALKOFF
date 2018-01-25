@@ -2,8 +2,8 @@ from unittest import TestCase
 
 import walkoff.config.config
 from walkoff.events import WalkoffEvent, EventType
-from interfaces import InterfaceEventDispatcher, dispatcher
-from interfaces.exceptions import UnknownEvent, InvalidEventHandler
+from walkoff.interfacebase import InterfaceEventDispatcher, dispatcher
+from walkoff.interfacebase.exceptions import UnknownEvent, InvalidEventHandler
 from walkoff.helpers import UnknownAppAction, UnknownApp
 
 

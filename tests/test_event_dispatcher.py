@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 from walkoff.events import WalkoffEvent, EventType
-from interfaces.dispatchers import EventDispatcher
+from walkoff.interfacebase.dispatchers import EventDispatcher
 
 
 def func(): pass

@@ -1,6 +1,6 @@
 from unittest import TestCase
-from apps.messaging import *
-from apps.messaging import MessageComponent, convert_class_name_to_tag
+from walkoff.appbase.messaging import *
+from walkoff.appbase.messaging import MessageComponent, convert_class_name_to_tag
 from walkoff.events import WalkoffEvent
 
 

@@ -1,5 +1,5 @@
 import time
-from apps import App, action
+from walkoff.appbase import App, action
 from tests.testapps.HelloWorld.exceptions import CustomException
 
 

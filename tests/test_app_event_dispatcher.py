@@ -3,7 +3,7 @@ from unittest import TestCase
 import walkoff.config.config
 from walkoff.events import WalkoffEvent, EventType
 from walkoff.helpers import UnknownApp, UnknownAppAction
-from interfaces import AppEventDispatcher
+from walkoff.interfacebase import AppEventDispatcher
 
 
 def func(): pass

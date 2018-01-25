@@ -1,8 +1,8 @@
 from unittest import TestCase
 
 from walkoff.events import WalkoffEvent
-from interfaces.exceptions import UnknownEvent
-from interfaces.util import convert_events, convert_to_iterable, validate_events, add_docstring
+from walkoff.interfacebase.exceptions import UnknownEvent
+from walkoff.interfacebase.util import convert_events, convert_to_iterable, validate_events, add_docstring
 
 
 class TestInterfaceEventDispatchHelpers(TestCase):
