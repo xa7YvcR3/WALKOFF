@@ -28,7 +28,7 @@ def register_blueprints(flaskapp):
 
 
 def __get_blueprints_in_module(module):
-    from interfaces import AppBlueprint
+    from walkoff.interfacebase import AppBlueprint
     blueprints = [getattr(module, field)
                   for field in dir(module) if (not field.startswith('__')
                                                and isinstance(getattr(module, field), AppBlueprint))]
@@ -53,8 +53,8 @@ def __register_app_blueprints(flaskapp, app_name, blueprints):
 
 def __register_all_app_blueprints(flaskapp):
     from walkoff.helpers import import_submodules
-    import interfaces
-    imported_apps = import_submodules(interfaces)
+    import walkoff.interfacebase
+    imported_apps = import_submodules(walkoff.interfacebase)
     for interface_name, interfaces_module in imported_apps.items():
         try:
             display_blueprints = []

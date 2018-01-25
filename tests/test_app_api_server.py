@@ -1,6 +1,6 @@
 import json
 
-import apps
+import walkoff.appbase
 import walkoff.appgateway
 import walkoff.config.config
 import walkoff.config.paths

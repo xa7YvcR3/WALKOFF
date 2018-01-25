@@ -3,7 +3,7 @@ import shutil
 import stat
 import unittest
 
-import apps
+import walkoff.appbase
 import walkoff.appgateway
 import walkoff.config.config
 import walkoff.config.paths
@@ -21,7 +21,7 @@ if not getattr(__builtins__, 'WindowsError', None):
 def modified_setup_worker_env():
     import tests.config
     import walkoff.config.config
-    import apps
+    import walkoff.appbase
     walkoff.appgateway.cache_apps(tests.config.test_apps_path)
     walkoff.config.config.load_app_apis(apps_path=tests.config.test_apps_path)
 
