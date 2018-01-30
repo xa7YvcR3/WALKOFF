@@ -23,6 +23,7 @@ def load(*args, **kwargs):
 @blueprint.blueprint.route('/test_blueprint')
 def test_basic_blueprint():
     # This can be called using the url /apps/HelloWorld/test_blueprint
+    print("i'm here")
     return 'successfully called basic blueprint'
 
 

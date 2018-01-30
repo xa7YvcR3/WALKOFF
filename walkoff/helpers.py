@@ -93,13 +93,13 @@ def import_app_main(app_name, path=None, reload=False):
     
     Args:
         app_name (str): The name of the App from which to import the main function.
-        path (str, optional): The path to the apps module. Defaults to core.config.paths.apps_path
+        path (str, optional): The path to the apps module. Defaults to core.config.paths.base_apps_path
         reload (bool, optional): Reload the module if already imported. Defaults to True
     Returns:
         The module object that was imported.
     """
     if path is None:
-        path = walkoff.config.paths.apps_path
+        path = walkoff.config.paths.base_apps_path
     app_path = os.path.join(path, app_name, 'main.py')
     module_name = construct_module_name_from_path(app_path[:-3])
     try:
@@ -135,16 +135,16 @@ def list_apps(path=None):
         path (str, optional): The path to the apps folder. Default is None.
         
     Returns:
-        A list of the apps given the apps path or the apps_path in the configuration.
+        A list of the apps given the apps path or the installed_apps_path in the configuration.
     """
     if path is None:
-        path = walkoff.config.paths.apps_path
+        path = walkoff.config.paths.installed_apps_path
     return __list_valid_directories(path)
 
 
 def list_interfaces(path=None):
     if path is None:
-        path = walkoff.config.paths.interfaces_path
+        path = walkoff.config.paths.installed_interfaces_path
     return __list_valid_directories(path)
 
 

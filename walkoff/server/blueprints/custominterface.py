@@ -4,7 +4,10 @@ from flask import Blueprint, render_template, g, abort
 from flask_jwt_extended import jwt_required
 from jinja2 import TemplateNotFound
 
-custom_interface_page = Blueprint('custom_interface', 'interfaces', template_folder=os.path.abspath('interfaces'),
+import walkoff.config.paths as paths
+
+custom_interface_page = Blueprint('custom_interface', 'interfaces',
+                                  template_folder=os.path.abspath(paths.installed_interfaces_path),
                                   static_folder='static')
 
 

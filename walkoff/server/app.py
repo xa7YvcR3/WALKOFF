@@ -1,6 +1,7 @@
 import logging
 import os
 
+import importlib
 import connexion
 from jinja2 import FileSystemLoader
 
@@ -53,9 +54,11 @@ def __register_app_blueprints(flaskapp, app_name, blueprints):
 
 def __register_all_app_blueprints(flaskapp):
     from walkoff.helpers import import_submodules
-    import walkoff.interfacebase
-    imported_apps = import_submodules(walkoff.interfacebase)
+    interfaces_dir, interfaces_pkg = os.path.split(paths.installed_interfaces_path)
+    ext_interfaces = importlib.import_module(interfaces_pkg)
+    imported_apps = import_submodules(ext_interfaces)
     for interface_name, interfaces_module in imported_apps.items():
+        print(interface_name, interfaces_module)
         try:
             display_blueprints = []
             for submodule in import_submodules(interfaces_module, recursive=True).values():
