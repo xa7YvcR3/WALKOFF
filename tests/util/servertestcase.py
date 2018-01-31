@@ -88,7 +88,7 @@ class ServerTestCase(unittest.TestCase):
 
     def setUp(self):
         walkoff.config.paths.workflows_path = tests.config.test_workflows_path_with_generated
-        walkoff.config.paths.apps_path = tests.config.test_apps_path
+        walkoff.config.paths.installed_apps_path = tests.config.test_apps_path
         walkoff.config.paths.default_appdevice_export_path = tests.config.test_appdevice_backup
         walkoff.config.paths.default_case_export_path = tests.config.test_cases_backup
         if os.path.exists(tests.config.test_workflows_backup_path):

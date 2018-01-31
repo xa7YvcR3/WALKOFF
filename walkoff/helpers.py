@@ -99,7 +99,8 @@ def import_app_main(app_name, path=None, reload=False):
         The module object that was imported.
     """
     if path is None:
-        path = walkoff.config.paths.base_apps_path
+        path = walkoff.config.paths.installed_apps_path
+
     app_path = os.path.join(path, app_name, 'main.py')
     module_name = construct_module_name_from_path(app_path[:-3])
     try:

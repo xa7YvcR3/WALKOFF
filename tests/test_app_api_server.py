@@ -12,13 +12,13 @@ from walkoff.server.endpoints.appapi import *
 
 class TestAppApiServerFuncs(ServerTestCase):
     def setUp(self):
-        self.original_apps_path = walkoff.config.paths.apps_path
-        walkoff.config.paths.apps_path = tests.config.test_apps_path
+        self.original_apps_path = walkoff.config.paths.installed_apps_path
+        walkoff.config.paths.installed_apps_path = tests.config.test_apps_path
         walkoff.appgateway.clear_cache()
         walkoff.appgateway.cache_apps(tests.config.test_apps_path)
 
     def tearDown(self):
-        walkoff.config.paths.apps_path = self.original_apps_path
+        walkoff.config.paths.installed_apps_path = self.original_apps_path
         walkoff.config.config.app_apis.pop('TestApp', None)
 
     def test_read_all_apps(self):
