@@ -14,7 +14,8 @@ custom_interface_page = Blueprint('custom_interface', 'interfaces',
 @custom_interface_page.url_value_preprocessor
 def static_request_handler(endpoint, values):
     g.interface = values.pop('interface', None)
-    static_path = os.path.abspath(os.path.join('interfaces', g.interface, 'interface', 'static'))
+    static_path = os.path.abspath(
+        os.path.join(paths.installed_interfaces_path, g.interface, 'interface', 'static'))
     custom_interface_page.static_folder = static_path
 
 
