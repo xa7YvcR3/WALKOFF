@@ -4,7 +4,7 @@ compose_api()
 
 import unittest
 import sys
-from tests import suites as test_suites
+from walkoff.tests import suites as test_suites
 import logging
 import walkoff.server.context
 import argparse
