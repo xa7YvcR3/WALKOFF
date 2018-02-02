@@ -37,7 +37,7 @@ matrix:
           - travis_test
 
     - language: python
-      os: linux
+      os: osx
       python: "3.4"
       install:
         - pip install -r requirements.txt
@@ -89,7 +89,7 @@ matrix:
           - master
           - development
           - travis_test
-          
+
     - language: node_js
       node_js:
         - "node"
