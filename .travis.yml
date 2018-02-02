@@ -32,10 +32,10 @@ matrix:
         - cd walkoff/client
         - npm install
       script: npm run test -- --single-run
-      
-branches:
-  only:
-    - master
-    - development
-    - travis_test
+
+  branches:
+    only:
+      - master
+      - development
+      - travis_test
 
