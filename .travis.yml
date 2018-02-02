@@ -7,7 +7,7 @@ matrix:
         - pip install -r requirements.txt
         - pip install coverage
       before_script:
-        - python generate_certificates.py
+        - python scripts/generate_certificates.py
       script:
         - coverage run run_all_tests.py
         - coverage combine
@@ -25,7 +25,7 @@ matrix:
         - pip install -r requirements.txt
         - pip install coverage
       before_script:
-        - python generate_certificates.py
+        - python scripts/generate_certificates.py
       script:
         - coverage run run_all_tests.py
         - coverage combine
@@ -43,7 +43,7 @@ matrix:
         - pip install -r requirements.txt
         - pip install coverage
       before_script:
-        - python generate_certificates.py
+        - python scripts/generate_certificates.py
       script:
         - coverage run run_all_tests.py
         - coverage combine
@@ -61,7 +61,7 @@ matrix:
         - pip install -r requirements.txt
         - pip install coverage
       before_script:
-        - python generate_certificates.py
+        - python scripts/generate_certificates.py
       script:
         - coverage run run_all_tests.py
         - coverage combine
@@ -79,7 +79,7 @@ matrix:
         - pip install -r requirements.txt
         - pip install coverage
       before_script:
-        - python generate_certificates.py
+        - python scripts/generate_certificates.py
       script:
         - coverage run run_all_tests.py
         - coverage combine
