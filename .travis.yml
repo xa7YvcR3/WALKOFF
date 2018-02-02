@@ -13,11 +13,7 @@ matrix:
         - coverage run run_all_tests.py
         - coverage combine
         - coverage report
-      branches:
-        only: 
-          - master
-          - development
-          - travis_test
+
     - language: node_js
       node_js:
         - "node"
@@ -36,7 +32,10 @@ matrix:
         - cd walkoff/client
         - npm install
       script: npm run test -- --single-run
-      branches:
-        only: 
-          - master
-          - development
+      
+branches:
+  only:
+    - master
+    - development
+    - travis_test
+
